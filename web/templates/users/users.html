@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{.Title}}</title>
+    <link rel="stylesheet" href="../../static/css/base/main.css">
+    <link rel="stylesheet" href="../../static/css/{{.CSS}}.css">
+</head>
+<body>
+{{template "admin-header" .}}
+
+<main class="admin-main">
+    <div class="container">
+        {{template "admin-nav" .}}
+
+        <div class="users">
+            <ul class="users__columns users-columns">
+                <li class="users-columns__item users-columns__name">
+                    <h3>Имя</h3>
+                </li>
+                <li class="users-columns__item users-columns__group">
+                    <h3>Группа</h3>
+                </li>
+                <li class="users-columns__item users-columns__plots">
+                    <h3>Участки</h3>
+                </li>
+            </ul>
+
+            <ul class="users__list">
+            </ul>
+        </div>
+
+    </div>
+</main>
+
+<script src="../../static/js/{{.JS}}.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{.Title}}</title>
+    <link rel="stylesheet" href="../../static/css/base/main.css">
+    <link rel="stylesheet" href="../../static/css/{{.CSS}}.css">
+</head>
+<body>
+{{template "admin-header" .}}
+
+<main class="admin-main">
+    <div class="container">
+        {{template "admin-nav" .}}
+
+        <form class="edit-user__form user-form" method="post">
+            <h3 class="user-form__title">Добавление клиента</h3>
+            <div class="user-form__block">
+                <label class="user-form__label" for="name">Имя</label>
+                <input id="name" class="user-form__input user-form__name" name="name" type="text"
+                       value="" required>
+            </div>
+
+            <div class="user-form__block">
+                <button class="user-form__submit" type="submit">Добавить</button>
+            </div>
+        </form>
+    </div>
+</main>
+
+<script src="../../static/js/{{.JS}}.js"></script>
+</body>
+</html>

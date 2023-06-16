@@ -1,0 +1,47 @@
+{{define "admin-nav"}}
+    <nav class="admin-panel__nav panel-nav">
+        <h3 class="panel-nav__title">Меню</h3>
+        <ul class="panel-nav__list">
+            <li class="panel-nav__item">
+                <a href="/users/view" class="panel-nav__link">Пользователи</a>
+                <a href="/users/add" class="panel-nav__link panel-nav__link--add">
+                    <span>+</span>
+                    Добавить
+                </a>
+            </li>
+
+            <li class="panel-nav__item">
+                <a href="/groups/view" class="panel-nav__link">Группы</a>
+                <a href="/groups/add" class="panel-nav__link panel-nav__link--add">
+                    <span>+</span>
+                    Добавить
+                </a>
+            </li>
+
+            <li class="panel-nav__item">
+                <a href="/plots/view" class="panel-nav__link">Участки</a>
+                <a href="/plots/add" class="panel-nav__link panel-nav__link--add">
+                    <span>+</span>
+                    Добавить
+                </a>
+
+            </li>
+
+            <li class="panel-nav__item">
+                <a href="/filters/view" class="panel-nav__link">Фильтры</a>
+                <a href="/filters/add" class="panel-nav__link panel-nav__link--add">
+                    <span>+</span>
+                    Добавить
+                </a>
+            </li>
+
+            <li class="panel-nav__item">
+                <a href="/clients/view" class="panel-nav__link">Клиенты</a>
+                <a href="/clients/add" class="panel-nav__link panel-nav__link--add">
+                    <span>+</span>
+                    Добавить
+                </a>
+            </li>
+        </ul>
+    </nav>
+{{end}}
