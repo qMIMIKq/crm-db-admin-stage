@@ -21,12 +21,19 @@ func (u *UsersPG) EditUser(user domain.UserInfo) error {
 
 	setter := fmt.Sprintf("SET user_name = $1, login = $2")
 	if len(user.Password) > 0 {
-		setter += ", password = $3 WHERE users.user_id = $4;"
+		setter += fmt.Sprintf(", password = $%d", len(args)+1)
 		args = append(args, user.Password)
-	} else {
-		setter += " WHERE users.user_id = $3;"
 	}
 
+	if len(user.Nickname) > 0 {
+		setter += fmt.Sprintf(", nickname = $%d", len(args)+1)
+		args = append(args, user.Nickname)
+	}
+
+	setter += fmt.Sprintf(", disable = $%d", len(args)+1)
+	args = append(args, user.Disable)
+
+	setter += fmt.Sprintf(" WHERE users.user_id = $%d", len(args)+1)
 	userQuery := fmt.Sprintf(`UPDATE users %s`, setter)
 	args = append(args, user.ID)
 
@@ -64,13 +71,13 @@ func (u UsersPG) CreateUser(user domain.UserInfo) (int, error) {
 	}
 
 	userQuery := fmt.Sprintf(`
-			INSERT INTO users (user_name, login, password)
-			VALUES ($1, $2, $3)								 
+			INSERT INTO users (user_name, login, password, nickname)
+			VALUES ($1, $2, $3, $4)								 
    RETURNING user_id;
 	`)
 
 	var id int
-	err = tx.QueryRow(userQuery, user.Name, user.Login, user.Password).Scan(&id)
+	err = tx.QueryRow(userQuery, user.Name, user.Login, user.Password, user.Nickname).Scan(&id)
 	if err != nil {
 		tx.Rollback()
 		return 0, err
@@ -98,7 +105,7 @@ func (u UsersPG) CreateUser(user domain.UserInfo) (int, error) {
 
 func (u *UsersPG) GetUserByID(userId int) (domain.UserInfo, error) {
 	query := fmt.Sprintf(`
-		SELECT u.user_id, u.login, u.user_name, g.group_name, p.plot_name, g.group_id, p.plot_id
+		SELECT u.user_id, u.login, u.user_name, u.nickname, u.disable, g.group_name, p.plot_name, g.group_id, p.plot_id
       FROM users_rights ur
            JOIN users u on u.user_id = ur.user_id
            JOIN groups g on g.group_id = ur.group_id
@@ -114,7 +121,7 @@ func (u *UsersPG) GetUserByID(userId int) (domain.UserInfo, error) {
 
 func (u *UsersPG) GetUsers() (domain.Users, error) {
 	query := fmt.Sprintf(`
-		SELECT u.user_id, u.user_name, g.group_name, p.plot_name
+		SELECT u.user_id, u.user_name, u.disable, g.group_name, p.plot_name
       FROM users_rights ur
            JOIN users u on u.user_id = ur.user_id
            JOIN groups g on g.group_id = ur.group_id

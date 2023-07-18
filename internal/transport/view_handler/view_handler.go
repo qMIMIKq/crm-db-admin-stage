@@ -53,6 +53,11 @@ func (h *viewHandler) InitViewRoutes(router *gin.Engine) {
 		clients.GET("/add", h.clientsAddView)
 		clients.GET("/edit/:id", h.clientsEditView)
 	}
+
+	constructor := router.Group("/constructor")
+	{
+		constructor.GET("/view", h.constructorView)
+	}
 }
 
 func NewViewHandler(services *services.Services) ViewHandler {

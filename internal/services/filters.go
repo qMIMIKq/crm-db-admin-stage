@@ -9,6 +9,10 @@ type FiltersService struct {
 	repo repository.Filters
 }
 
+func (f FiltersService) UpdatePosition(filters []domain.FilterInfo) error {
+	return f.repo.UpdatePosition(filters)
+}
+
 func (f FiltersService) EditFilter(filter domain.FilterInfo) error {
 	return f.repo.EditFilter(filter)
 }

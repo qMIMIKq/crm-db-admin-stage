@@ -2,11 +2,13 @@ package view_handler
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/rs/zerolog/log"
 	"net/http"
 	"strconv"
 )
 
 func (h *viewHandler) filtersView(c *gin.Context) {
+
 	c.HTML(http.StatusOK, "filters.html", gin.H{
 		"Title": "Управление фильтрами",
 		"CSS":   "users/users",
@@ -36,6 +38,8 @@ func (h *viewHandler) filtersEditView(c *gin.Context) {
 		newRedirecter(c, err)
 		return
 	}
+
+	log.Info().Interface("filter", filter).Msg("filter")
 
 	c.HTML(http.StatusOK, "filters-edit.html", gin.H{
 		"Title":  "Изменение фильтра",

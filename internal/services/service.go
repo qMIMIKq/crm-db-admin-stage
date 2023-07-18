@@ -35,6 +35,7 @@ type Filters interface {
 	GetFilterByID(filterId int) (domain.FilterInfo, error)
 	CreateFilter(filter domain.FilterInfo) (int, error)
 	EditFilter(filter domain.FilterInfo) error
+	UpdatePosition(filters []domain.FilterInfo) error
 }
 
 type Clients interface {

@@ -8,7 +8,7 @@ let err = false
 let ok = false
 
 const drawData = (url, block, userData) => {
-    fetch(`http://192.168.1.230:8192/api/${url}`)
+    fetch(`http://172.20.10.7:8192/api/${url}`)
         .then(res => res.json())
         .then(data => {
             data.data.forEach(group => {
@@ -50,12 +50,15 @@ editForm.addEventListener("submit", e => {
                 break
             case "password_repeat":
                 break
+            case 'disable':
+                obj[key] = value === "on"
+                break
             default:
                 obj[key] = value
         }
     }))
 
-    fetch("http://192.168.1.230:8192/api/users/edit", {
+    fetch("http://172.20.10.7:8192/api/users/edit", {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"

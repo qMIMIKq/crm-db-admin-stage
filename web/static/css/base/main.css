@@ -105,3 +105,17 @@ ul {
 .panel-nav__item:nth-child(even) {
     background: #f3efef;
 }
+
+/*.wrapper__block {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*}*/
+
+/*.wrapper__block ul {*/
+/*    width: 50%;*/
+/*}*/
+
+/*.wrapper__block ul .users-item__column {*/
+/*    width: 100%;*/
+/*    text-align: left;*/
+/*}*/

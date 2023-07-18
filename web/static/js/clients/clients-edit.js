@@ -18,7 +18,7 @@ editForm.addEventListener("submit", e => {
         }
     }))
 
-    fetch("http://192.168.1.230:8192/api/clients/edit", {
+    fetch("http://172.20.10.7:8192/api/clients/edit", {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"

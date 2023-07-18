@@ -52,3 +52,20 @@ func (h *handler) editFilter(c *gin.Context) {
 		"status": "ok",
 	})
 }
+
+func (h *handler) editFilterPosition(c *gin.Context) {
+	var filters []domain.FilterInfo
+	if err := c.Bind(&filters); err != nil {
+		newErrorResponse(c, http.StatusBadRequest, err.Error())
+		return
+	}
+
+	if err := h.services.Filters.UpdatePosition(filters); err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, map[string]interface{}{
+		"status": "ok",
+	})
+}

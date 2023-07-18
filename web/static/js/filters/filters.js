@@ -1,7 +1,7 @@
 const usersList = document.querySelector(".users__list")
 
 const getAndDrawUsers = () => {
-    fetch("http://192.168.1.230:8192/api/filters/get-all")
+    fetch("http://172.20.10.7:8192/api/filters/get-all")
         .then(res => res.json())
         .then(data => {
             if (data.data !== null) {
@@ -28,6 +28,9 @@ const drawUsers = (data) => {
                     <a class="users-item__link" href="/filters/edit/${filter.id}">${filter.name.toUpperCase()}</a>
                 </div>
                 <div class="users-item__column users-item__group">${ucFirst(filter.plot)}</div>
+                <div class="users-item__column users-item__disabled">
+                    ${filter.disable ? 'Да' : 'Нет'}
+                </div>
             </li>
         `)
     })

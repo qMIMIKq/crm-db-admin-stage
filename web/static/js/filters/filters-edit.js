@@ -8,7 +8,7 @@ let ok = false
 const exceptions = ["все"]
 
 const drawData = (url, block, userData) => {
-    fetch(`http://192.168.1.230:8192/api/${url}`)
+    fetch(`http://172.20.10.7:8192/api/${url}`)
         .then(res => res.json())
         .then(data => {
             data.data.forEach(group => {
@@ -62,13 +62,17 @@ editForm.addEventListener("submit", e => {
             case "id":
                 obj[key] = Number(value)
                 break
+            case 'disable':
+                obj[key] = value === "on"
+                console.log(value === "on")
+                break
             default:
                 obj[key] = value.trim().toLowerCase()
         }
     }))
 
 
-    fetch("http://192.168.1.230:8192/api/filters/edit", {
+    fetch("http://172.20.10.7:8192/api/filters/edit", {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"

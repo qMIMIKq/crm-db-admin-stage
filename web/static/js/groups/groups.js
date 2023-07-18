@@ -1,7 +1,7 @@
 const groupsList = document.querySelector(".groups__list")
 
 const getAndDrawGroups = () => {
-    fetch("http://192.168.1.230:8192/api/groups/get-all")
+    fetch("http://172.20.10.7:8192/api/groups/get-all")
         .then(res => res.json())
         .then(data => drawGroups(data.data))
 }

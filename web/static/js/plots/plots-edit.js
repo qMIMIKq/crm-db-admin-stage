@@ -13,12 +13,15 @@ editForm.addEventListener("submit", e => {
             case "id":
                 obj[key] = Number(value)
                 break
+            case 'disable':
+                console.log(value)
+                break
             default:
                 obj[key] = value.toLowerCase().trim()
         }
     }))
 
-    fetch("http://192.168.1.230:8192/api/plots/edit", {
+    fetch("http://172.20.10.7:8192/api/plots/edit", {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"

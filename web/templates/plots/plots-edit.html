@@ -18,11 +18,16 @@
 
         <form class="edit-user__form user-form" method="post">
             <h3 class="user-form__title">Изменение участка</h3>
+            <input class="hidden__input" name="id" type="text" value="{{.Plot.ID}}">
             <div class="user-form__block">
-                <input class="hidden__input" name="id" type="text" value="{{.Plot.ID}}">
                 <label class="user-form__label" for="plot_name">Название</label>
                 <input id="plot_name" class="user-form__input user-form__name" name="name" type="text"
                        value="{{.Plot.Name}}" required>
+            </div>
+            <div class="user-form__block">
+                <label class="user-form__label" for="short_name">Короткое имя</label>
+                <input id="short_name" class="user-form__input user-form__name" name="short_name" type="text"
+                       value="{{.Plot.ShortName}}" required>
             </div>
 
             <div class="user-form__block">
