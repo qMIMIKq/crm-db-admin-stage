@@ -57,7 +57,7 @@ func (f FiltersPG) GetFilters() ([]domain.FilterInfo, error) {
 						 f.plot_id, f.disable, p.plot_name
 			  FROM filters f
 						 JOIN plots p USING(plot_id)
-		  ORDER BY f.disable
+		  ORDER BY f.position
 	`)
 
 	var filters []domain.FilterInfo

@@ -8,7 +8,7 @@ let ok = false
 const exceptions = ["все"]
 
 const drawData = (url, block, userData) => {
-    fetch(`http://172.20.10.7:8192/api/${url}`)
+    fetch(`http://192.168.1.231:8192/api/${url}`)
         .then(res => res.json())
         .then(data => {
             data.data.forEach(group => {
@@ -72,7 +72,7 @@ editForm.addEventListener("submit", e => {
     }))
 
 
-    fetch("http://172.20.10.7:8192/api/filters/edit", {
+    fetch("http://192.168.1.231:8192/api/filters/edit", {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"

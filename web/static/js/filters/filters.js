@@ -1,7 +1,7 @@
 const usersList = document.querySelector(".users__list")
 
 const getAndDrawUsers = () => {
-    fetch("http://172.20.10.7:8192/api/filters/get-all")
+    fetch("http://192.168.1.231:8192/api/filters/get-all")
         .then(res => res.json())
         .then(data => {
             if (data.data !== null) {

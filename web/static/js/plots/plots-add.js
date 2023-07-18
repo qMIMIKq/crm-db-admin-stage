@@ -10,7 +10,7 @@ addForm.addEventListener("submit", e => {
 
     formData.forEach(((value, key) => obj[key] = value.toLowerCase()))
 
-    fetch("http://172.20.10.7:8192/api/plots/add", {
+    fetch("http://192.168.1.231:8192/api/plots/add", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

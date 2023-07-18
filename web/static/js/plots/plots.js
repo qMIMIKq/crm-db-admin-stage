@@ -1,7 +1,7 @@
 const plotsList = document.querySelector(".plots__list")
 
 const getAndDrawPlots = () => {
-    fetch("http://172.20.10.7:8192/api/plots/get-all")
+    fetch("http://192.168.1.231:8192/api/plots/get-all")
         .then(res => res.json())
         .then(data => drawPlots(data.data))
 }
