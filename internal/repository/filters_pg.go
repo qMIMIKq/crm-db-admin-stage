@@ -51,14 +51,19 @@ func (f FiltersPG) CreateFilter(filter domain.FilterInfo) (int, error) {
 	return id, err
 }
 
-func (f FiltersPG) GetFilters() ([]domain.FilterInfo, error) {
+func (f FiltersPG) GetFilters(hidden bool) ([]domain.FilterInfo, error) {
 	query := fmt.Sprintf(`
 			SELECT f.filter_id, f.filter_name, 
 						 f.plot_id, f.disable, p.plot_name
 			  FROM filters f
 						 JOIN plots p USING(plot_id)
-		  ORDER BY f.position
 	`)
+
+	if hidden {
+		query += " ORDER BY f.disable"
+	} else {
+		query += " ORDER BY f.position"
+	}
 
 	var filters []domain.FilterInfo
 	err := f.db.Select(&filters, query)

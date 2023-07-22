@@ -8,7 +8,7 @@
 }
 
 .users {
-    width: 45%;
+    width: 60%;
     max-height: 600px;
     overflow-y: auto;
 }
@@ -29,8 +29,8 @@
 
 .users-item {
     color: #447e9b;
-    height: 44px;
-    padding: 10px;
+    min-height: 44px;
+    padding: 5px;
     border: 1px solid gray;
     border-radius: 5px;
     font-weight: 600;

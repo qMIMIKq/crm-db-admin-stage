@@ -17,7 +17,7 @@
         {{template "admin-nav" .}}
 
         <form class="edit-user__form user-form" method="post">
-            <h3 class="user-form__title">Изменение участка</h3>
+            <h3 class="user-form__title">Изменение группы</h3>
             <div class="user-form__block">
                 <input class="hidden__input" name="id" type="text" value="{{.Group.ID}}">
                 <label class="user-form__label" for="plot_name">Название</label>
@@ -27,7 +27,8 @@
 
             <div class="user-form__block description__block">
                 <label class="user-form__label" for="description">Описание</label>
-                <textarea class="user-form__input group__description" name="description" id="description">{{.Group.Description}}</textarea>
+                <textarea class="user-form__input group__description" name="description"
+                          id="description">{{.Group.Description}}</textarea>
             </div>
 
             <div class="user-form__block">

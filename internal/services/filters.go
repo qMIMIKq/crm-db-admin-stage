@@ -21,8 +21,8 @@ func (f FiltersService) CreateFilter(filter domain.FilterInfo) (int, error) {
 	return f.repo.CreateFilter(filter)
 }
 
-func (f FiltersService) GetFilters() ([]domain.FilterInfo, error) {
-	return f.repo.GetFilters()
+func (f FiltersService) GetFilters(hidden bool) ([]domain.FilterInfo, error) {
+	return f.repo.GetFilters(hidden)
 }
 
 func (f FiltersService) GetFilterByID(filterId int) (domain.FilterInfo, error) {

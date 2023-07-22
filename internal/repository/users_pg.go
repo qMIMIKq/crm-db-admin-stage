@@ -121,12 +121,12 @@ func (u *UsersPG) GetUserByID(userId int) (domain.UserInfo, error) {
 
 func (u *UsersPG) GetUsers() (domain.Users, error) {
 	query := fmt.Sprintf(`
-		SELECT u.user_id, u.user_name, u.disable, g.group_name, p.plot_name
+		SELECT u.user_id, u.user_name, u.nickname, u.disable, g.group_name, p.plot_name
       FROM users_rights ur
            JOIN users u on u.user_id = ur.user_id
            JOIN groups g on g.group_id = ur.group_id
            JOIN plots p on p.plot_id = ur.plot_id
-     ORDER BY u.user_name DESC;
+     ORDER BY u.disable;
 	`)
 
 	var users domain.Users

@@ -45,6 +45,7 @@ func (h *handler) InitRoutes(router *gin.Engine) {
 		filters := api.Group("/filters")
 		{
 			filters.GET("/get-all", h.getFilters)
+			filters.GET("/get-all-hidden", h.getByHiddenFilters)
 			filters.POST("/add", h.addFilter)
 			filters.PUT("/edit", h.editFilter)
 			filters.PUT("/edit-position", h.editFilterPosition)

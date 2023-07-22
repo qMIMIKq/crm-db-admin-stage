@@ -31,7 +31,7 @@ type Users interface {
 }
 
 type Filters interface {
-	GetFilters() ([]domain.FilterInfo, error)
+	GetFilters(hidden bool) ([]domain.FilterInfo, error)
 	GetFilterByID(filterId int) (domain.FilterInfo, error)
 	CreateFilter(filter domain.FilterInfo) (int, error)
 	EditFilter(filter domain.FilterInfo) error

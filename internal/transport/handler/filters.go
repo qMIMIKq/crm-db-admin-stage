@@ -7,7 +7,19 @@ import (
 )
 
 func (h *handler) getFilters(c *gin.Context) {
-	filters, err := h.services.Filters.GetFilters()
+	filters, err := h.services.Filters.GetFilters(false)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, map[string]interface{}{
+		"data": filters,
+	})
+}
+
+func (h *handler) getByHiddenFilters(c *gin.Context) {
+	filters, err := h.services.Filters.GetFilters(true)
 	if err != nil {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
 		return
