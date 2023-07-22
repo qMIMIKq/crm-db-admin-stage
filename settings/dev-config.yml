@@ -5,9 +5,9 @@ crm_port: 8181
 salt: dasdfasffsdf
 
 db:
-  host: 191.168.1.231
+  host: 192.168.1.231
   port: 5437
   user: nik
-  password: 1325
+  password: '1325'
   name: nik
   sslmode: disable
