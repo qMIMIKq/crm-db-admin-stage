@@ -43,13 +43,13 @@ func (f *FiltersPG) UpdatePosition(filters []domain.FilterInfo) error {
 
 func (f FiltersPG) CreateFilter(filter domain.FilterInfo) (int, error) {
 	query := fmt.Sprintf(`
-			INSERT INTO filters (filter_name, plot_id, disable, start_time, end_time)
-			VALUES ($1, $2, $3, $4, $5)
+			INSERT INTO filters (filter_name, plot_id, start_time, end_time)
+			VALUES ($1, $2, $3, $4)
 			RETURNING filter_id
 	`)
 
 	var id int
-	err := f.db.QueryRow(query, filter.Name, filter.PlotID, filter.StartTime, filter.EndTime, filter.Disable).Scan(&id)
+	err := f.db.QueryRow(query, filter.Name, filter.PlotID, filter.StartTime, filter.EndTime).Scan(&id)
 
 	return id, err
 }
