@@ -4,7 +4,7 @@ const plotsSection = document.querySelector("#plot")
 const exceptions = ["все"]
 
 const drawData = (url, block) => {
-  fetch(`http://192.168.1.231:8192/api/${url}`)
+  fetch(`http://91.142.94.150:8192/api/${url}`)
     .then(res => res.json())
     .then(data => {
       data.data.forEach(group => {
@@ -65,7 +65,7 @@ addForm.addEventListener("submit", e => {
         obj[key] = value
     }
   }))
-  fetch("http://192.168.1.231:8192/api/filters/add", {
+  fetch("http://91.142.94.150:8192/api/filters/add", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"

@@ -4,7 +4,7 @@ const usersList = document.querySelector(".users__list")
 let filters = []
 
 const getAndDrawUsers = async () => {
-  await fetch("http://192.168.1.231:8192/api/filters/get-all")
+  await fetch("http://91.142.94.150:8192/api/filters/get-all")
     .then(res => res.json())
     .then(data => {
       if (data.data !== null) {
@@ -25,7 +25,7 @@ const removeUsers = () => {
 }
 
 const submitFilters = async (data) => {
-  await fetch("http://192.168.1.231:8192/api/filters/edit-position", {
+  await fetch("http://91.142.94.150:8192/api/filters/edit-position", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json"

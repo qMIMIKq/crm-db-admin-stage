@@ -4,6 +4,7 @@ import (
 	"crm_admin/internal/domain"
 	"fmt"
 	"github.com/jmoiron/sqlx"
+	"github.com/rs/zerolog/log"
 )
 
 type FiltersPG struct {
@@ -11,6 +12,8 @@ type FiltersPG struct {
 }
 
 func (f FiltersPG) EditFilter(filter domain.FilterInfo) error {
+	log.Info().Interface("filter", filter).Msg("Filter!!")
+
 	query := fmt.Sprintf(`
 			UPDATE filters
 				 SET filter_name = $1, plot_id = $2,
@@ -60,9 +63,9 @@ func (f FiltersPG) GetFilters(hidden bool) ([]domain.FilterInfo, error) {
 	`)
 
 	if hidden {
-		query += " ORDER BY f.disable"
+		query += " ORDER BY f.disable, f.filter_id"
 	} else {
-		query += " ORDER BY f.position"
+		query += " ORDER BY f.position, f.filter_id"
 	}
 
 	var filters []domain.FilterInfo

@@ -10,7 +10,7 @@ addForm.addEventListener("submit", e => {
 
   formData.forEach(((value, key) => obj[key] = value))
 
-  fetch("http://192.168.1.231:8192/api/plots/add", {
+  fetch("http://91.142.94.150:8192/api/plots/add", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"

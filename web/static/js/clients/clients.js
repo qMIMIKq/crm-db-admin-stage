@@ -1,6 +1,9 @@
 const usersList = document.querySelector(".users__list")
+
+//91.142.94.150
+
 const getAndDrawUsers = () => {
-  fetch("http://192.168.1.231:8192/api/clients/get-all")
+  fetch("http://91.142.94.150:8192/api/clients/get-all")
     .then(res => res.json())
     .then(data => {
       if (data.data !== null) {

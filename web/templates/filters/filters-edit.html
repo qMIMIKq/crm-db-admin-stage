@@ -41,14 +41,14 @@
 
             <div class="user-form__block">
                 <label class="user-form__label" for="plot">Начало работы</label>
-                <input id="plot" class="user-form__input user-form__login" name="start_time" type="text"
-                       value="{{.Filter.StartTime}}" placeholder="00:00">
+                <input id="plot" class="user-form__input user-form__login" name="start_time" type="time"
+                       value="{{ if .Filter.StartTime}}{{.Filter.StartTime}}{{else}}08:00{{end}}" placeholder="00:00">
             </div>
 
             <div class="user-form__block">
                 <label class="user-form__label" for="end-time">Конец работы</label>
-                <input id="end-time" class="user-form__input user-form__name" name="end_time" type="text"
-                       value="{{.Filter.EndTime}}" placeholder="00:00">
+                <input id="end-time" class="user-form__input user-form__name" name="end_time" type="time"
+                       value="{{ if .Filter.EndTime}}{{.Filter.EndTime}}{{else}}20:00{{end}}" placeholder="00:00">
             </div>
 
             <div class="user-form__block">
